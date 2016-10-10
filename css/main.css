@@ -1,0 +1,28 @@
+#theform {
+	text-align: center;
+	margin-top: 200px;
+}
+
+.list {
+	text-align: center;
+	margin: 0 auto;
+	padding: 0;
+}
+
+li {
+	min-width: 200px;
+	max-width: 600px;
+	min-height: 30px;
+	position: relative;
+	background: rgba(144,165,175,1);
+	padding: 10px;
+	list-style-type: none;
+	margin: 3px auto;
+	text-align: center;
+	border: 1px solid grey;
+	border-radius: 3px;
+}
+
+.background {
+	background-color: steelblue;
+}
