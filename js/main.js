@@ -18,7 +18,7 @@ Fortune.prototype.init = function() {
     	  console.log(err);
     	});
   	}
-}
+};
 
 Fortune.prototype.getWord = function() {
   var self = this;
@@ -32,32 +32,29 @@ Fortune.prototype.getWord = function() {
       self.fortune = data[Math.floor(Math.random() * 100) +1].message;
       resolve(); 
     });    
-  })
+  });
 };
 
 Fortune.prototype.initTwo = function() {
 	this.buttonAdd();
 	this.addItems();
-}
+};
 
 Fortune.prototype.buttonAdd = function() {
-	var text = document.createTextNode('Submit2');
+	var self = this;
 	var form = document.getElementById('theform');
 	var butt = document.createElement('button');
-	butt.setAttribute('onclick','this.addItems()');
-	butt.setAttribute('type','button');
-	butt.appendChild(text);
+	butt.innerText = 'WTf';
+	butt.addEventListener('click', function(e) {
+		e.preventDefault();
+		self.getWord();
+		self.addItems();
+	});
 	form.appendChild(butt);
-}
-
-Fortune.prototype.showFortune = function() {
-	console.log(this.fortune);
-	return this.fortune;
-}
+};
 
 Fortune.prototype.addItems = function(){
-	// var userData = document.getElementById('userData').value
-	var textNode = document.createTextNode(this.showFortune());
+	var textNode = document.createTextNode(this.fortune);
 	var li = document.createElement('li');
 	var list = document.getElementById('list');
 	li.appendChild(textNode);
@@ -66,12 +63,6 @@ Fortune.prototype.addItems = function(){
 };
 
 var newF = new Fortune({});
-
-// function next() {
-// 	return newF;
-// }
-// console.log(objj);
-
 
 
 
