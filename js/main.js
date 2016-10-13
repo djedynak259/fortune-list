@@ -37,14 +37,13 @@ Fortune.prototype.getWord = function() {
 
 Fortune.prototype.initTwo = function() {
 	this.buttonAdd();
-	this.addItems();
 };
 
 Fortune.prototype.buttonAdd = function() {
 	var self = this;
 	var form = document.getElementById('theform');
 	var butt = document.createElement('button');
-	butt.innerText = 'WTf';
+	butt.innerText = 'New Fortune';
 	butt.addEventListener('click', function(e) {
 		e.preventDefault();
 		self.getWord();
