@@ -1,5 +1,5 @@
 function Fortune(obj) {
-	this.api = obj.api || 'http://fortunecookieapi.com/v1/fortunes';
+	this.api = obj.api || 'http://fortunecookieapi.com/v1/fortunes?limit=&skip=&page=';
 	this.fortune = null;
 
 	this.init();
@@ -24,14 +24,17 @@ Fortune.prototype.getWord = function() {
   var self = this;
 
   return new Promise(function(resolve, reject) {
-    fetch('http://fortunecookieapi.com/v1/fortunes')
+    fetch('http://fortunecookieapi.com/v1/fortunes?limit=&skip=&page=')
     .then(function(res) {
       return res.json();
     })
     .then(function(data) {
       self.fortune = data[Math.floor(Math.random() * 100) +1].message;
       resolve(); 
-    });    
+    })
+    .catch(function(err) {
+    	  console.log(err);
+   	})    
   });
 };
 
