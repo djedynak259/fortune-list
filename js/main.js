@@ -7,12 +7,10 @@ function Fortune(obj) {
 
 
 Fortune.prototype.init = function() {
-	var self = this;
-
   	if (!this.fortune) {
     	return this.getWord()
-    	.then(function(data) { 
-    	  self.initTwo();
+    	.then(data => { 
+    	  this.initTwo();
     	})
     	.catch(function(err) {
     	  console.log(err);
@@ -28,7 +26,7 @@ Fortune.prototype.getWord = function() {
     .then(function(res) {
       return res.json();
     })
-    .then(function(data) {
+    .then((data) => {
       self.fortune = data.value.joke;
       resolve(); 
     })
@@ -43,14 +41,13 @@ Fortune.prototype.initTwo = function() {
 };
 
 Fortune.prototype.buttonAdd = function() {
-	var self = this;
 	var form = document.getElementById('theform');
 	var butt = document.createElement('button');
 	butt.innerText = 'New Joke';
-	butt.addEventListener('click', function(e) {
+	butt.addEventListener('click', e => {
 		e.preventDefault();
-		self.getWord();
-		self.addItems();
+		this.getWord();
+		this.addItems();
 	});
 	form.appendChild(butt);
 };
