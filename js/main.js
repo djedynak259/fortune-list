@@ -1,5 +1,5 @@
 function Fortune(obj) {
-	this.api = obj.api || 'http://fortunecookieapi.com/v1/fortunes?limit=&skip=&page=';
+	this.api = obj.api || 'https://api.icndb.com/jokes/random';
 	this.fortune = null;
 
 	this.init();
@@ -24,12 +24,12 @@ Fortune.prototype.getWord = function() {
   var self = this;
 
   return new Promise(function(resolve, reject) {
-    fetch('http://fortunecookieapi.com/v1/fortunes?limit=&skip=&page=')
+    fetch('https://api.icndb.com/jokes/random')
     .then(function(res) {
       return res.json();
     })
     .then(function(data) {
-      self.fortune = data[Math.floor(Math.random() * 100) +1].message;
+      self.fortune = data.value.joke;
       resolve(); 
     })
     .catch(function(err) {
@@ -46,7 +46,7 @@ Fortune.prototype.buttonAdd = function() {
 	var self = this;
 	var form = document.getElementById('theform');
 	var butt = document.createElement('button');
-	butt.innerText = 'New Fortune';
+	butt.innerText = 'New Joke';
 	butt.addEventListener('click', function(e) {
 		e.preventDefault();
 		self.getWord();
